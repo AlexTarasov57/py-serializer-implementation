@@ -5,12 +5,12 @@ from car.models import Car
 
 
 class CarSerializer(serializers.Serializer):
-    manufacturer = serializers.CharField(max_length=64)
-    model = serializers.CharField(max_length=64)
+    manufacturer = serializers.CharField(max_length=64, required=True)
+    model = serializers.CharField(max_length=64, required=True)
     horse_powers = serializers.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(1914)]
+        min_value=1, max_value=1914, required=True
     )
-    is_broken = serializers.BooleanField()
+    is_broken = serializers.BooleanField(required=True)
     problem_description = serializers.CharField(
         required=False,
         allow_blank=True
