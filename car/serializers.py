@@ -39,8 +39,5 @@ class CarSerializer(serializers.Serializer):
             "problem_description",
             instance.problem_description
         )
+        instance.save()
         return instance
-
-    class Meta:
-        model = Car
-        fields = "__all__"
